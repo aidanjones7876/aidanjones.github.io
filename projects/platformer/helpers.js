@@ -8,7 +8,7 @@ function registerSetup(setup) {
 }
 
 function main() {
-  ctx.clearRect(0, 0, 1400, 750); //erase the screen so you can draw everything in it's most current position
+  ctx.clearRect(0, 0, 1920, 1080); //erase the screen so you can draw everything in it's most current position
 
   if (player.deadAndDeathAnimationDone) {
     deathOfPlayer();
