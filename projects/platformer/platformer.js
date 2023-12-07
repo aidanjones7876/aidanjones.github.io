@@ -56,13 +56,13 @@ $(function () {
     createPlatform(600, 600, 250, 10);
     createPlatform(850, 100, 10, 510);
     createPlatform(750, 200, 10, 305);
-    createPlatform(840, 500, 10, 10);
-    createPlatform(760, 450, 10, 10);
-    createPlatform(840, 400, 10, 10);
-    createPlatform(760, 350, 10, 10);
-    createPlatform(840, 300, 10, 10);
-    createPlatform(760, 250, 10, 10);
-    createPlatform(840, 200, 10, 10);
+    createPlatform(830, 500, 20, 10);
+    createPlatform(760, 450, 20, 10);
+    createPlatform(830, 400, 20, 10);
+    createPlatform(760, 350, 20, 10);
+    createPlatform(830, 300, 20, 10);
+    createPlatform(760, 250, 20, 10);
+    createPlatform(830, 200, 20, 10);
     createPlatform(100, 100, 600, 10);
     createPlatform(0, 400, 100, 10);
     createPlatform(100, 250, 10, 160);
@@ -89,7 +89,7 @@ $(function () {
     // example usage: createCannon(side, position, delay, width, height)
     createCannon('top', 465, 650, 40, 50);
     createCannon('right', 300, 1200, 40, 10);
-    createCannon('right', 500, 1000, 40, 10);
+    createCannon('right', 500, 1500, 40, 10);
 
 
 
