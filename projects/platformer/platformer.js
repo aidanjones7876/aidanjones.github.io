@@ -54,19 +54,40 @@ $(function () {
     
     //route to second coin
     createPlatform(600, 600, 250, 10);
-    createPlatform(850, 100, 10, 510);
-    createPlatform(750, 200, 10, 305);
+    createPlatform(850, 0, 10, 610);
+    createPlatform(750, 100, 10, 405);
     createPlatform(830, 500, 20, 10);
-    createPlatform(760, 450, 20, 10);
-    createPlatform(830, 400, 20, 10);
-    createPlatform(760, 350, 20, 10);
-    createPlatform(830, 300, 20, 10);
+    createPlatform(760, 430, 20, 10);
+    createPlatform(830, 350, 20, 10);
     createPlatform(760, 250, 20, 10);
-    createPlatform(830, 200, 20, 10);
+    createPlatform(830, 150, 20, 10);
     createPlatform(100, 100, 600, 10);
     createPlatform(0, 400, 100, 10);
     createPlatform(100, 250, 10, 160);
     createPlatform(0, 300, 10, 10);
+    
+    //route to third coin
+    createPlatform(600, 850, 200, 10);
+    createPlatform(600, 850, 10, 108);
+
+    //route to fourth coin
+    createPlatform(900, 800, 10, 10);
+    createPlatform(1000, 750, 10, 10);
+    createPlatform(1100, 700, 10, 10);
+    createPlatform(1200, 650, 10, 10);
+    createPlatform(1300, 600, 100, 10);
+    createPlatform(1500, 500, 100, 10);
+    createPlatform(1300, 400, 100, 10);
+    createPlatform(850, 300, 400, 10);
+
+    //blocks cheat route to fifth coin
+    createPlatform(1600, 500, 10, 200);
+    createPlatform(1300, 700, 310, 10);
+    createPlatform(1300, 600, 10, 350);
+    createPlatform(1550, 200, 10, 300);
+
+    //route to fifth coin
+    createPlatform(1300, 200, 100, 10);
     
     // TODO 2
     // Create collectables
@@ -74,13 +95,11 @@ $(function () {
     // Your collectable choices are 'database' 'diamond' 'grace' 'kennedi' 'max' and 'steve'; more can be added if you wish
     // example usage: createCollectable(type, x, y, gravity, bounce)
     createCollectable('grace', 230, 900);
-    var dataBase = createCollectable('database', 100, 50);
-    var kennedi = createCollectable('kennedi', 600, 300);
-   kennedi = false;
-
-
-
-    //box is removed once second coing (database) is collected. Spawns in third coin (kennedi).
+    createCollectable('database', 100, 50);
+    createCollectable('kennedi', 600, 300);
+    createCollectable('max', 630, 900);
+    createCollectable('steve', 900, 250);
+    createCollectable('database', 1570, 400);
 
     // TODO 3
     // Create cannons
@@ -90,6 +109,12 @@ $(function () {
     createCannon('top', 465, 650, 40, 50);
     createCannon('right', 300, 1200, 40, 10);
     createCannon('right', 500, 1500, 40, 10);
+    createCannon('right', 980, 10000, 250 ,300);
+    createCannon('top', 965, 2000, 30, 30);
+    createCannon('top', 1065, 2300, 30, 30);
+    createCannon('top', 1165, 2600, 30, 30);
+    createCannon('top', 1265, 2900, 30, 30);
+    createCannon('bottom', 1400, 2000, 30, 30);
 
 
 
