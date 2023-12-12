@@ -100,6 +100,7 @@ $(function () {
     createCollectable('max', 630, 900);
     createCollectable('steve', 900, 250);
     createCollectable('database', 1570, 400);
+    createCollectable('steve', 1350, 800);
 
     // TODO 3
     // Create cannons
