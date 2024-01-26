@@ -5,17 +5,24 @@
 	<title>Bouncing Box</title>
 	<script src="jquery.min.js"></script>
 	<style>
+		body{
+		-webkit-background-size: cover;
+    	-moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+		background-image: url(https://i.ibb.co/WnHDk0W/better.jpg);
+		}
 		.box {
 			width: 70px;
 			height: 70px;
-			background-color: teal;
+			background-color: rgb(235, 9, 9);
 			font-size: 300%;
 			text-align: center;
 			user-select: none;
 			display: block;
 			position: absolute;
 			top: 100px;
-			left: 0px;  /* <--- Change me! */
+			left: 10px;  /* <--- Change me! */
 		}
 		.board{
 			height: 100vh;
@@ -48,8 +55,9 @@
 			box.on('click', handleBoxClick);
 
 			// moves the Box to a new position on the screen along the X-Axis
-			function moveBoxTo(newPositionX) {
+			function moveBoxTo(newPositionX, newPositionY) {
 				box.css("left", newPositionX);
+				box.css('top', newPositionY);
 			}
 
 			// changes the text displayed on the Box
@@ -62,17 +70,39 @@
 			//////////////////////////////////////////////////////////////////
 			
 			// TODO 2 - Variable declarations 
-			
+			var positionX = 0;
+			var points = 0;
+			var speed = 10;
+			var positionY = 0;
+			var speedY = 10;
+			var boardHeight = jQuery(window).height(); 
+			var colorStr = "rgb(50, 25, 250)";
+			box.css("background-color", colorStr);
 
-			
+			var randNum = Math.random() * 100;
+
 			/* 
 			This Function will be called 20 times/second. Each time it is called,
 			it should move the Box to a new location. If the box drifts off the screen
 			turn it around! 
 			*/
 			function update() {
+				/* Your Code to Increase positionX by 10 HERE */
+				moveBoxTo(positionX, positionY);
+				positionX = positionX + speed;
+				positionY = positionY + speedY;
+				if (positionX > boardWidth - 50) {
+     				// then do X, Y, and Z
+					speed = -speed;
+				}
+				else if(positionX < 0){
+					speed = -speed;
+				} else if(positionY > 1080){
+					speedY = -speedY;
+				} else if(positionY < 0){
+					speedY = -speedY;
+				}
 				
-
 			};
 
 			/* 
@@ -81,8 +111,12 @@
 			the left side of the screen.
 			*/
 			function handleBoxClick() {
+				positionX = 0;
+				points = points + 1;
+				changeBoxText(points);
+				speed = speed + 3;
+				speedY = speedY + 3;
 				
-
 
 			};
 		})();
