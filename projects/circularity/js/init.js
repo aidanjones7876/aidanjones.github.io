@@ -24,6 +24,7 @@ var init = function (window) {
         var circles = [];
 
         // TODO 2 : Create a function that draws a circle 
+        //This function allows me to draw an infinite number of circles
         function drawCircle () {
             circle = draw.randomCircleInArea(canvas, true, true, "#999", 2);
             physikz.addRandomVelocity(circle, canvas, 15, 10);
@@ -32,6 +33,7 @@ var init = function (window) {
         }
 
         // TODO 3 / 7 : Call the drawCircle() function 
+        // This for loop allows me to draw 100 circles
         for (var i = 0; i < 100; i++) {
             drawCircle();
         }
@@ -54,7 +56,7 @@ var init = function (window) {
            //deleted in order to be looped in TODO 9
 
             // TODO 9 : Iterate over the array
-            
+            // this for loop allows the balls to move around
             for (var i = 0; i < circles.length; i++) {
                 physikz.updatePosition(circles[i]);
                 game.checkCirclePosition(circles[i]);
@@ -69,6 +71,9 @@ var init = function (window) {
         game.checkCirclePosition = function(circle) {
 
             // if the circle has gone past the RIGHT side of the screen then place it on the LEFT
+            // TODO 6 : YOUR CODE STARTS HERE //////////////////////
+            // this entire if statement allows the balls to come back on the screen after going outside of the screen
+            
             if ( circle.x > canvas.width ) {
                 circle.x = -5;
             } else if (circle.x < -5) {
@@ -79,10 +84,6 @@ var init = function (window) {
                 circle.y = canvas.height;
             }
             
-            // TODO 6 : YOUR CODE STARTS HERE //////////////////////
-            
-
-
             // YOUR TODO 6 CODE ENDS HERE //////////////////////////
         }
         
