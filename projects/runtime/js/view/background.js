@@ -29,7 +29,7 @@ var background = function (window) {
         // ANIMATION VARIABLES HERE //////////////////////////////////////
         //////////////////////////////////////////////////////////////////
         // TODO (several):
-      
+      var tree;
       
         // called at the start of game and whenever the page is resized
         // add objects for display in background. draws each image added to the background once
@@ -39,17 +39,40 @@ var background = function (window) {
             // TODO 1:
             // this currently fills the background with an obnoxious yellow;
             // you should modify both the height and color to suit your game
-            var backgroundFill = draw.rect(canvasWidth,canvasHeight,'yellow');
+            
+            //color of background
+            var backgroundFill = draw.rect(canvasWidth,groundY,'darkblue');
             background.addChild(backgroundFill);
             
             // TODO 2: - Add a moon and starfield
+            
+            //creates 100 random stars that stay on the canvas
+            for(var stars = 0; stars <= 100; stars++) {
+                var circle = draw.circle(2, "white", "LightGray", 2);
+                circle.x = canvasWidth * Math.random();
+                circle.y = groundY * Math.random();
+                background.addChild(circle);
+            }
+            
+            //creates moon
+            var moon = draw.bitmap("img/moon.png");
+            moon.x = canvasWidth -150;
+            moon.y = groundY - 600;
+            moon.scaleX = 0.9;
+            moon.scaleY = 0.9;
+            background.addChild(moon);
+
+            
             
             
             // TODO 4: Part 1 - Add buildings!     Q: This is before TODO 4 for a reason! Why?
             
             
             // TODO 3: Part 1 - Add a tree
-            
+            tree = draw.bitmap("img/tree.png");
+            tree.x = canvasWidth -200;
+            tree.y = groundY -220;
+            background.addChild(tree);
             
         } // end of render function - DO NOT DELETE
         
@@ -63,7 +86,13 @@ var background = function (window) {
             var groundY = ground.y;
             
             // TODO 3: Part 2 - Move the tree!
-            
+            //allows tree to move
+            tree.x = tree.x - 10;
+
+            //makes tree come back on screen once gong off the screen
+            if (tree.x < -300) {
+            tree.x = canvasWidth;
+            }
             
             // TODO 4: Part 2 - Parallax
             
