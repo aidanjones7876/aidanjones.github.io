@@ -33,7 +33,7 @@ var runLevels = function (window) {
       obstacleImage.y = -25;
     }
     
-    createSawBlade(500, groundY - 100)
+    createSawBlade(500, groundY - 120)
     function startLevel() {
       // TODO 13 goes below here
 
