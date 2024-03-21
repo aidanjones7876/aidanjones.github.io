@@ -30,6 +30,7 @@ var background = function (window) {
         //////////////////////////////////////////////////////////////////
         // TODO (several):
       var tree;
+      var buildings = [];
       
         // called at the start of game and whenever the page is resized
         // add objects for display in background. draws each image added to the background once
@@ -62,11 +63,17 @@ var background = function (window) {
             moon.scaleY = 0.9;
             background.addChild(moon);
 
-            
-            
-            
             // TODO 4: Part 1 - Add buildings!     Q: This is before TODO 4 for a reason! Why?
             
+            //creates buildings with random sizes
+            for (var i = 0; i < 5; i++) {
+                var buildingHeight = 300 * Math.random();
+                var building = draw.rect(75, buildingHeight, "LightGray", "Black", 1);
+                building.x = 200 * i;
+                building.y = groundY - buildingHeight;
+                background.addChild(building);
+                buildings.push(building);
+            }
             
             // TODO 3: Part 1 - Add a tree
             tree = draw.bitmap("img/tree.png");
@@ -95,7 +102,17 @@ var background = function (window) {
             }
             
             // TODO 4: Part 2 - Parallax
-            
+            //makes the buildings slowly moves toward Halle to give the parallax illusion
+            for (var i = 0; i < buildings.length; i++) {
+                var building = buildings[i];
+                building.x = building.x -= 1;
+                //if function brings buildings back on screen
+                if(building.x < -100) {
+                    building.x = canvasWidth + 100;
+                }
+                // code to do something with each element
+            }
+
 
         } // end of update function - DO NOT DELETE
         
