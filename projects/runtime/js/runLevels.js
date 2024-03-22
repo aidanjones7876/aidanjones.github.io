@@ -32,8 +32,81 @@ var runLevels = function (window) {
       obstacleImage.x = -25;
       obstacleImage.y = -25;
     }
-    
+
+    //creates an enemy that can do 10 dmg and can die when shot
+    function createEnemy (x, y) {
+      var enemy = game.createGameItem("enemy", 25);
+      var redSquare = draw.rect(50, 50, "red");
+      redSquare.x = -25;
+      redSquare.y = -25;
+      enemy.addChild(redSquare);
+      enemy.x = x;
+      enemy.y = y;
+      game.addGameItem(enemy);
+      enemy.velocityX = -4;
+      
+      enemy.onPlayerCollision = function () {
+        game.changeIntegrity(-10)
+      };
+
+      enemy.onProjectileCollision = function () {
+        game.increaseScore(100);
+        enemy.fadeOut();
+        enemy.fly(0, 0)  
+      };
+    }
+
+    //creates a reward to collect for 100 points
+    function createReward (x, y) {
+      var reward = game.createGameItem("enemy", 25);
+      var blueSquare = draw.rect(50, 50, "blue");
+      blueSquare.x = -25;
+      blueSquare.y = -25;
+      reward.addChild(blueSquare);
+      reward.x = x;
+      reward.y = y;
+      game.addGameItem(reward);
+      reward.velocityX = -4;
+      
+      reward.onPlayerCollision = function () {
+        game.increaseScore(100)
+        reward.fadeOut();
+      };
+    }
+
+    //creates a marker to move on to the next level
+    function createMarker (x, y) {
+      var marker = game.createGameItem("enemy", 25);
+      var yellowSquare = draw.rect(50, 50, "yellow");
+      yellowSquare.x = -25;
+      yellowSquare.y = -25;
+      marker.addChild(yellowSquare);
+      marker.x = x;
+      marker.y = y;
+      game.addGameItem(marker);
+      marker.velocityX = -4;
+      
+      marker.onPlayerCollision = function () {
+        game.increaseScore(200)
+        marker.fadeOut();
+        startLevel();
+      };
+
+      marker.onProjectileCollision = function () {
+        game.increaseScore(200);
+        enemy.fadeOut();
+        startLevel();
+      };
+    }
+
+    //function calls
+    createSawBlade(600, groundY - 120)
     createSawBlade(500, groundY - 120)
+    createEnemy(700, groundY - 50)
+    createReward(1400, groundY - 75)
+    createMarker(2000, groundY - 75)
+
+
     function startLevel() {
       // TODO 13 goes below here
 
