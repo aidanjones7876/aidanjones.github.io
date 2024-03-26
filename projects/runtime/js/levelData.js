@@ -15,9 +15,11 @@ var makeLevelData = function (window) {
         number: 1,
         speed: -3,
         gameItems: [
-          { type: "sawblade", x: 400, y: groundY },
-          { type: "sawblade", x: 600, y: groundY },
-          { type: "sawblade", x: 900, y: groundY },
+          { type: "sawblade", x: 400, y: groundY -120},
+          { type: "sawblade", x: 600, y: groundY -120},
+          { type: "enemy", x: 900, y: groundY -120, image: "img/Bat enemy.png", moveX: -75, moveY: -150, velocity: -4, scaleX:0.5, scaleY: 0.25, damage: -10, scoreIncrease: 100},
+          { type: "reward", x: 1100, y: groundY -75},
+          { type: "marker", x: 1500, y: groundY -10},
         ],
       },
       {

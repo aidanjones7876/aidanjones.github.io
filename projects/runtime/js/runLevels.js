@@ -36,7 +36,7 @@ var runLevels = function (window) {
     //creates an enemy that can do 10 dmg and can die when shot
     function createEnemy (x, y) {
       var enemy = game.createGameItem("enemy", 25);
-      var redSquare = draw.rect(50, 50, "red");
+      var redSquare = draw.bitmap('img/Bat enemy.png');
       redSquare.x = -25;
       redSquare.y = -25;
       enemy.addChild(redSquare);
@@ -52,7 +52,6 @@ var runLevels = function (window) {
       enemy.onProjectileCollision = function () {
         game.increaseScore(100);
         enemy.fadeOut();
-        enemy.fly(0, 0)  
       };
     }
 
@@ -100,16 +99,28 @@ var runLevels = function (window) {
     }
 
     //function calls
-    createSawBlade(600, groundY - 120)
-    createSawBlade(500, groundY - 120)
-    createEnemy(700, groundY - 50)
-    createReward(1400, groundY - 75)
-    createMarker(2000, groundY - 75)
+    
 
 
     function startLevel() {
       // TODO 13 goes below here
-
+      var level = levelData[currentLevel];
+      var levelObjects = level.gameItems
+      for(var i = 0; i < levelObjects.length; i++) {
+        var element = levelObjects[i];
+        if (element.type === 'sawblade') {
+          createSawBlade(element.x, element.y)
+        }
+        if(element.type === 'enemy') {
+          createEnemy(element.x, element.y)
+        }
+        if(element.type === 'reward') {
+          createReward(element.x, element.y)
+        }
+        if(element.type === 'marker') {
+          createMarker(element.x, element.y)
+        }
+      }
 
 
       //////////////////////////////////////////////
