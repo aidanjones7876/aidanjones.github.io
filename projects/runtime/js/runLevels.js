@@ -33,6 +33,26 @@ var runLevels = function (window) {
       obstacleImage.y = -25;
     }
 
+    //creates a spike similar to that of the sawblade, but does less damage and a much more abundance of them
+    function createSpike (x, y) {
+      var obstacle = game.createGameItem("spike", 5);
+      var spike = draw.bitmap('img/SPIKE.png');
+      spike.x = -40;
+      spike.y = -15;
+      obstacle.addChild(spike);
+      obstacle.x = x;
+      obstacle.y = y;
+      game.addGameItem(obstacle);
+      obstacle.velocityX = -2;
+      spike.scaleX = 0.2;
+      spike.scaleY = 0.2;
+
+      obstacle.onPlayerCollision = function () {
+        game.changeIntegrity(-5)
+      };
+
+    }
+
     //creates an enemy that can do 10 dmg and can die when shot
     function createEnemy (x, y) {
       var enemy = game.createGameItem("enemy", 25);
@@ -44,6 +64,8 @@ var runLevels = function (window) {
       enemy.y = y;
       game.addGameItem(enemy);
       enemy.velocityX = -4;
+      redSquare.scaleX = 0.25;
+      redSquare.scaleY = 0.25;
       
       enemy.onPlayerCollision = function () {
         game.changeIntegrity(-10)
@@ -58,7 +80,7 @@ var runLevels = function (window) {
     //creates a reward to collect for 100 points
     function createReward (x, y) {
       var reward = game.createGameItem("enemy", 25);
-      var blueSquare = draw.rect(50, 50, "blue");
+      var blueSquare = draw.bitmap("img/coin.png");
       blueSquare.x = -25;
       blueSquare.y = -25;
       reward.addChild(blueSquare);
@@ -66,6 +88,8 @@ var runLevels = function (window) {
       reward.y = y;
       game.addGameItem(reward);
       reward.velocityX = -4;
+      blueSquare.scaleX = 1;
+      blueSquare.scaleY = 1;
       
       reward.onPlayerCollision = function () {
         game.increaseScore(100)
@@ -119,6 +143,9 @@ var runLevels = function (window) {
         }
         if(element.type === 'marker') {
           createMarker(element.x, element.y)
+        }
+        if(element.type === 'spike') {
+          createSpike(element.x, element.y)
         }
       }
 
