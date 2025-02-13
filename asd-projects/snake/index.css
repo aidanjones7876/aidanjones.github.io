@@ -1,0 +1,41 @@
+
+body {
+  background-image: url('stare.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
+
+}
+
+#board {
+  width: 440px;
+  height: 440px;
+  border: 1px solid white;
+  background-color: black;
+}
+
+#score, #highScore {
+  color: rgb(0, 0, 0);
+}
+
+.snake, .apple {
+  display: block;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  user-select: none;
+}
+
+.snake {
+  background-color: rgb(123, 45, 164);
+  z-index: 2;
+}
+
+#snake-head {
+  background-color: rgb(72, 9, 95);
+}
+
+.apple {
+  background-color: rgb(231, 64, 64);
+  z-index: 1;
+}
