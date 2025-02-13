@@ -35,14 +35,23 @@ function runProgram(){
     width: $("#walker").width(),
     height: $("#walker").height(),
   };
-  var walker2 = {
-    xPos: BOARD_WIDTH - WALKER_WIDTH,
-    yPos: BOARD_HEIGHT - WALKER_HEIGHT,
-    xSpeed: 0,
-    ySpeed: 0,
-    width: $("#walker2").width(),
-    height: $("#walker2").height(),
-  };
+  var walker = Walker("#walker", 0, 0, 0, 0, $("#walker").width(), $("#walker").height());
+  var walker2 = Walker("#walker2", BOARD_WIDTH - WALKER_WIDTH, BOARD_HEIGHT - WALKER_HEIGHT, 0, 0, $("#walker2").width(), $("#walker2").height());
+
+  function Walker(id, xPos, yPos, xSpeed, ySpeed, width, height) {
+    let obj = {
+      id: id,
+      xPos: xPos,
+      yPos: yPos,
+      xSpeed: xSpeed,
+      ySpeed: ySpeed,
+      width: width,
+      height: height,
+    }
+    return obj;
+  }
+
+
 
   // one-time setup
   var interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
