@@ -1,6 +1,6 @@
 body {
-    background: rgb(126, 4, 156);
-    color: rgb(123, 107, 180);
+    background: rgb(102, 66, 25);
+    color: rgb(170, 132, 27);
     padding: 10px;
     font-family: arial;
 }
@@ -11,7 +11,7 @@ body {
 
 /* navigation menu */
 nav {
-    background: rgb(10, 5, 54);
+    background: rgb(196, 142, 26);
    margin: 0 auto;
     display: flex;
     padding: 10px;
@@ -19,7 +19,7 @@ nav {
 h1 {
     display: flex;
     align-items: center;
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     flex: 1;
     margin: 0;
 }
@@ -71,7 +71,7 @@ h2, h3 {
 }
 
 #portfolio li {
-    background: #9c2579;
+    background: #b37e1e;
     padding: 10px;
     border-radius: 10px;
     margin-bottom: 10px;
