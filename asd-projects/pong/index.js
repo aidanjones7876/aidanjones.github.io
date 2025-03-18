@@ -12,6 +12,11 @@ function runProgram(){
   const FRAMES_PER_SECOND_INTERVAL = 1000 / FRAME_RATE;
   const BOARD_WIDTH = $("#board").width();
   const BOARD_HEIGHT = $("#board").height();
+  const PADDLE_WIDTH = $("#paddleLeft").width();
+  const PADDLE_HEIGHT = $("#paddleLeft").height();
+  const BALL_WIDTH = $("#ball").width();
+  const BALL_HEIGHT = $("#ball").height();
+  
   // Game Item Objects
   const KEY = {
     "W": 87,
@@ -59,6 +64,11 @@ function runProgram(){
     updateGameItem(paddleRight);
     drawGameItem(ball);
     updateGameItem(ball);
+    wallCollide(ball);
+    paddleWall(paddleLeft);
+    paddleWall(paddleRight);
+    doCollide(ball, paddleLeft);
+    doCollide(ball, paddleRight);
   }
   
   /* 
@@ -66,16 +76,16 @@ function runProgram(){
   */
   function handleKeyDown(event) {
     if(event.which === KEY.W){
-      paddleLeft.speedY = -5;
+      paddleLeft.speedY = -8;
     }
     if(event.which === KEY.S){
-      paddleLeft.speedY = 5;
+      paddleLeft.speedY = 8;
     }
     if(event.which === KEY.UP){
-      paddleRight.speedY = -5;
+      paddleRight.speedY = -8;
     }
     if(event.which === KEY.DOWN){
-      paddleRight.speedY = 5;
+      paddleRight.speedY = 8;
     }
   }
   
@@ -88,7 +98,7 @@ function runProgram(){
     }
   }
   
-  
+
 
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
@@ -104,6 +114,38 @@ function runProgram(){
     obj.y += obj.speedY;
   }
 
+  function paddleWall(obj){
+    if(obj.y > BOARD_HEIGHT - PADDLE_HEIGHT){
+      obj.speedY = 0;
+      obj.y = BOARD_HEIGHT - PADDLE_HEIGHT;
+    }
+    else if(obj.y < 0){
+      obj.speedY = 0;
+      obj.y = 0;
+    }
+  }
+
+  function wallCollide(obj){
+    if(obj.x > BOARD_WIDTH - BALL_WIDTH) {
+      obj.speedX = -obj.speedX;
+
+    }
+    else if(obj.x < 0){
+      obj.speedX = -obj.speedX;
+    }
+    if(obj.y > BOARD_HEIGHT - BALL_HEIGHT) {
+      obj.speedY = -obj.speedY;
+    }
+    else if(obj.y < 0){
+      obj.speedY = -obj.speedY;
+    }
+  }
+
+  function doCollide(ball, paddle) {
+    if(ball.x < paddle.x + PADDLE_WIDTH && ball.x > paddle.x - PADDLE_WIDTH && ball.y < paddle.y + PADDLE_HEIGHT && ball.y > paddle.y){
+      ball.speedX = -ball.speedX * 1.1;
+    }
+  }
   //check boundaries of game items
   //determine if objects collide
   //handle what happens when the ball hits the walls
