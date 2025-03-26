@@ -128,12 +128,12 @@ function runProgram() {
     if (obj.x > BOARD_WIDTH - BALL_WIDTH) {
       // Right paddle scores
       scoreRight++;
-      scoreRightElement.text(scoreRight);
+      scoreRightElement.text("Score: " + scoreRight);
       resetBall(ball);
     } else if (obj.x < 0) {
       // Left paddle scores
       scoreLeft++;
-      scoreLeftElement.text(scoreLeft);
+      scoreLeftElement.text("Score: " + scoreLeft);
       resetBall(ball);
     }
   }

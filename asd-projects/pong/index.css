@@ -8,7 +8,7 @@ body {
   height: 500px;
   border: 1px solid white;
   background-color: black;
-  position: relative;
+  position: center;
 }
 .paddle {
   width: 20px;
@@ -21,7 +21,7 @@ body {
    left: 10px;   /* Uncomment if you want to set a "starting" position */
    top: 150px;    /* Uncomment if you want to set a "starting" position */
 }
-#paddleLeftPoints {
+#scoreLeft {
   background-color: white;
   position: absolute;
   top: 10px;
@@ -35,7 +35,7 @@ body {
    left: 870px;   /* Uncomment if you want to set a "starting" position */
    top: 150px;    /* Uncomment if you want to set a "starting" position */
 }
-#paddleRightPoints {
+#scoreRight {
   background-color: white;
   position: absolute;
   top: 10px;
