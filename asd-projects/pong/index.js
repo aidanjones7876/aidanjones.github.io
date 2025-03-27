@@ -10,6 +10,7 @@ function runProgram() {
   const FRAMES_PER_SECOND_INTERVAL = 1000 / FRAME_RATE;
   var scoreLeftElement = $("#scoreLeft");
   var scoreRightElement = $("#scoreRight");
+  var name = $("#title");
   const BOARD_WIDTH = $("#board").width();
   const BOARD_HEIGHT = $("#board").height();
   const PADDLE_WIDTH = $("#paddleLeft").width();
@@ -47,7 +48,7 @@ function runProgram() {
   let interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
   $(document).on('keydown', handleKeyDown);                           // change 'eventType' to the type of event you want to handle
   $(document).on('keyup', handleKeyUp);
-
+  
   ////////////////////////////////////////////////////////////////////////////////
   ///////////////////////// CORE LOGIC ///////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////

@@ -1,6 +1,6 @@
 
 body {
-  background-color: darkgreen;
+  background-color: rgb(44, 29, 57);
 }
 
 #board {
@@ -8,8 +8,30 @@ body {
   height: 500px;
   border: 1px solid white;
   background-color: black;
-  position: center;
+  left: 400px;
+  top: 300px;
+  position: absolute;
 }
+
+#title {
+  position: absolute;
+  top: -300px;
+  left: 220px;
+  font-size: 150px;
+  font-weight: bold;
+  text-shadow: 0 0 10px rgb(127, 0, 0), 0 0 20px rgb(74, 12, 105), 0 0 30px rgb(79, 0, 163), 0 0 40px rgb(154, 69, 233), 0 0 50px rgb(206, 134, 242), 0 0 60px rgb(247, 0, 255);
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px rgb(196, 93, 237), 0 0 20px rgb(17, 234, 39), 0 0 30px rgb(255, 0, 0), 0 0 40px rgb(255, 0, 0), 0 0 50px rgb(255, 0, 0), 0 0 60px rgb(255, 0, 0);
+  }
+  to {
+    text-shadow: 0 0 20px rgb(0, 4, 240), 0 0 40px rgb(240, 0, 0), 0 0 60px rgb(25, 0, 255), 0 0 80px rgb(25, 0, 255), 0 0 100px rgb(25, 0, 255), 0 0 120px rgb(43, 0, 255);
+  }
+}
+
 .paddle {
   width: 20px;
   height: 120px;
@@ -24,7 +46,7 @@ body {
 #scoreLeft {
   background-color: white;
   position: absolute;
-  top: 10px;
+  top: -100px;
   left: 50px;
   font-size: 24px;
   font-weight: bold;
@@ -38,7 +60,7 @@ body {
 #scoreRight {
   background-color: white;
   position: absolute;
-  top: 10px;
+  top: -100px;
   right: 50px;
   font-size: 24px;
   font-weight: bold;
