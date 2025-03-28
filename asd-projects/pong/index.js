@@ -48,6 +48,7 @@ function runProgram() {
   let interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
   $(document).on('keydown', handleKeyDown);                           // change 'eventType' to the type of event you want to handle
   $(document).on('keyup', handleKeyUp);
+  $(document).on('click', '#restartButton', restartGame);
   
   ////////////////////////////////////////////////////////////////////////////////
   ///////////////////////// CORE LOGIC ///////////////////////////////////////////
@@ -157,26 +158,24 @@ function runProgram() {
 
   function points(ball, paddleLeft, paddleRight) {
     if (ball.x < 0) {
-      // Left paddle scores
-      scoreLeft++;
-      scoreLeftElement.text(scoreLeft);
-      resetBall(ball);
-      
-    }
-    if(scoreLeft === 7) {
-      
-    }
-     else if (ball.x > BOARD_WIDTH - BALL_WIDTH) {
       // Right paddle scores
       scoreRight++;
-      scoreRightElement.text(scoreRight);
+      scoreRightElement.text("Score: " + scoreRight);
       resetBall(ball);
-      
-    }
-    if(scoreRight === 7) {
-      
+      if (scoreRight === 7) {
+        endGame("Right Player");
+      }
+    } else if (ball.x > BOARD_WIDTH - BALL_WIDTH) {
+      // Left paddle scores
+      scoreLeft++;
+      scoreLeftElement.text("Score: " + scoreLeft);
+      resetBall(ball);
+      if (scoreLeft === 7) {
+        endGame("Left Player");
+      }
     }
   }
+  $("#endGameScreen").hide();
 
   function resetBall(ball) {
     ball.x = (BOARD_WIDTH - BALL_WIDTH) / 2;
@@ -186,5 +185,21 @@ function runProgram() {
   }
 
   // Handle what happens when someone wins
+  function endGame(winner) {
+    clearInterval(interval); // Stop the game loop
+    $("#endGameScreen").show();
+    $("#endGameMessage").text(winner + " wins!");
+  }
+
+  //restart game
+  function restartGame() {
+    scoreLeft = 0;
+    scoreRight = 0;
+    scoreLeftElement.text("Score: " + scoreLeft);
+    scoreRightElement.text("Score: " + scoreRight);
+    resetBall(ball);
+    interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);
+    $("#endGameScreen").hide();
+  }
  
 }
