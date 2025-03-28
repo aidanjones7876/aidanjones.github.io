@@ -278,7 +278,7 @@ function showEndGameScreen() {
   });
 }
 
-// Add some CSS for the end game screen (you can adjust as needed)
+// Add some CSS for the end game screen
 $("<style>")
   .prop("type", "text/css")
   .html(`

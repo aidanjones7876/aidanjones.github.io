@@ -128,13 +128,13 @@ function runProgram() {
   function horizontalWallCollide(obj) {
     if (obj.x > BOARD_WIDTH - BALL_WIDTH) {
       // Right paddle scores
-      scoreRight++;
-      scoreRightElement.text("Score: " + scoreRight);
+      scoreLeft++;
+      scoreLeftElement.text("Score: " + scoreLeft);
       resetBall(ball);
     } else if (obj.x < 0) {
       // Left paddle scores
-      scoreLeft++;
-      scoreLeftElement.text("Score: " + scoreLeft);
+      scoreRight++;
+      scoreRightElement.text("Score: " + scoreRight);
       resetBall(ball);
     }
   }
@@ -151,7 +151,7 @@ function runProgram() {
   function doCollide(ball, paddle) {
     // Determines if objects collide
     if (ball.x < paddle.x + PADDLE_WIDTH && ball.x + BALL_WIDTH > paddle.x && ball.y < paddle.y + PADDLE_HEIGHT && ball.y + BALL_HEIGHT > paddle.y) {
-      ball.speedX = -ball.speedX * 1.05;
+      ball.speedX = -ball.speedX * 1.2;
     }
   }
 
@@ -161,11 +161,20 @@ function runProgram() {
       scoreLeft++;
       scoreLeftElement.text(scoreLeft);
       resetBall(ball);
-    } else if (ball.x > BOARD_WIDTH - BALL_WIDTH) {
+      
+    }
+    if(scoreLeft === 7) {
+      
+    }
+     else if (ball.x > BOARD_WIDTH - BALL_WIDTH) {
       // Right paddle scores
       scoreRight++;
       scoreRightElement.text(scoreRight);
       resetBall(ball);
+      
+    }
+    if(scoreRight === 7) {
+      
     }
   }
 
@@ -177,14 +186,5 @@ function runProgram() {
   }
 
   // Handle what happens when someone wins
-  // Handle the points
-  // Handle resetting the game
-
-  function endGame() {
-    // Stop the interval timer
-    clearInterval(interval);
-
-    // Turn off event handlers
-    $(document).off();
-  }
+ 
 }
