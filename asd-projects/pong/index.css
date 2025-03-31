@@ -4,19 +4,19 @@ body {
 }
 
 #board {
-  width: 900px;
+  width: 1200px;
   height: 500px;
   border: 1px solid white;
   background-color: black;
-  left: 400px;
-  top: 300px;
+  left: 300px;
+  top: 280px;
   position: absolute;
 }
 
 #title {
   position: absolute;
   top: -300px;
-  left: 220px;
+  left: 340px;
   font-size: 150px;
   font-weight: bold;
   text-shadow: 0 0 10px rgb(127, 0, 0), 0 0 20px rgb(74, 12, 105), 0 0 30px rgb(79, 0, 163), 0 0 40px rgb(154, 69, 233), 0 0 50px rgb(206, 134, 242), 0 0 60px rgb(247, 0, 255);
@@ -55,7 +55,7 @@ body {
 
 #paddleRight {
   background-color: rgb(255, 255, 255);
-   left: 870px;   /* Uncomment if you want to set a "starting" position */
+   left: 1170px;   /* Uncomment if you want to set a "starting" position */
    top: 150px;    /* Uncomment if you want to set a "starting" position */
 }
 #scoreRight {
@@ -78,5 +78,37 @@ body {
   top: 220px;
 }
 
+#endGameScreen {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  z-index: 1000; /* Ensure it appears above other elements */
+}
 
+#endGameMessage {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+#restartButton {
+  padding: 10px 20px;
+  font-size: 1em;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#restartButton:hover {
+  background-color: #45a049;
+}
 

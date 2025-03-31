@@ -6,7 +6,7 @@ function runProgram() {
   ////////////////////////////////////////////////////////////////////////////////
 
   // Constant Variables
-  const FRAME_RATE = 60;
+  const FRAME_RATE = 120;
   const FRAMES_PER_SECOND_INTERVAL = 1000 / FRAME_RATE;
   var scoreLeftElement = $("#scoreLeft");
   var scoreRightElement = $("#scoreRight");
@@ -49,7 +49,8 @@ function runProgram() {
   $(document).on('keydown', handleKeyDown);                           // change 'eventType' to the type of event you want to handle
   $(document).on('keyup', handleKeyUp);
   $(document).on('click', '#restartButton', restartGame);
-  
+  $("#endGameScreen").hide();
+
   ////////////////////////////////////////////////////////////////////////////////
   ///////////////////////// CORE LOGIC ///////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
@@ -71,7 +72,7 @@ function runProgram() {
     paddleWall(paddleRight);
     doCollide(ball, paddleLeft);
     doCollide(ball, paddleRight);
-    points(ball, paddleLeft, paddleRight);
+    points(ball);
   }
 
   /* 
@@ -79,16 +80,16 @@ function runProgram() {
   */
   function handleKeyDown(event) {
     if (event.which === KEY.W) {
-      paddleLeft.speedY = -8;
+      paddleLeft.speedY = -4;
     }
     if (event.which === KEY.S) {
-      paddleLeft.speedY = 8;
+      paddleLeft.speedY = 4;
     }
     if (event.which === KEY.UP) {
-      paddleRight.speedY = -8;
+      paddleRight.speedY = -4;
     }
     if (event.which === KEY.DOWN) {
-      paddleRight.speedY = 8;
+      paddleRight.speedY = 4;
     }
   }
 
@@ -128,12 +129,12 @@ function runProgram() {
   // Handles what happens when the ball hits the walls
   function horizontalWallCollide(obj) {
     if (obj.x > BOARD_WIDTH - BALL_WIDTH) {
-      // Right paddle scores
+      // Left paddle scores
       scoreLeft++;
       scoreLeftElement.text("Score: " + scoreLeft);
       resetBall(ball);
     } else if (obj.x < 0) {
-      // Left paddle scores
+      // Right paddle scores
       scoreRight++;
       scoreRightElement.text("Score: " + scoreRight);
       resetBall(ball);
@@ -152,11 +153,11 @@ function runProgram() {
   function doCollide(ball, paddle) {
     // Determines if objects collide
     if (ball.x < paddle.x + PADDLE_WIDTH && ball.x + BALL_WIDTH > paddle.x && ball.y < paddle.y + PADDLE_HEIGHT && ball.y + BALL_HEIGHT > paddle.y) {
-      ball.speedX = -ball.speedX * 1.2;
+      ball.speedX = -ball.speedX * 1.05;
     }
   }
 
-  function points(ball, paddleLeft, paddleRight) {
+  function points(ball) {
     if (ball.x < 0) {
       // Right paddle scores
       scoreRight++;
@@ -175,7 +176,6 @@ function runProgram() {
       }
     }
   }
-  $("#endGameScreen").hide();
 
   function resetBall(ball) {
     ball.x = (BOARD_WIDTH - BALL_WIDTH) / 2;
@@ -191,7 +191,6 @@ function runProgram() {
     $("#endGameMessage").text(winner + " wins!");
   }
 
-  //restart game
   function restartGame() {
     scoreLeft = 0;
     scoreRight = 0;
@@ -201,5 +200,4 @@ function runProgram() {
     interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);
     $("#endGameScreen").hide();
   }
- 
 }
