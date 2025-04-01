@@ -15,17 +15,16 @@
   </head>
   
   <body>
-    <div id="endGameScreen" style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; background-color: rgba(0, 0, 0, 0.8); color: white; padding: 20px; border-radius: 10px;">
-      <h1 id="endGameMessage">Game Over</h1>
-      <button id="restartButton">Restart</button>
-    </div>
+    <div id="endGameScreen" style="display: none;">
+      <h1 id="winnerText" style="text-align: center;">Player 1 wins!</h1>
+      <button id="restartButton">Restart Game</button>
     </div>
     <div id='board'>
       <h1 id = "title">PONG</h1>
       <div class = "paddle" id='paddleLeft'></div>
       <div class = "paddle" id='paddleRight'></div>
-      <h1 id = "scoreLeft"> Score: 0</h1>
-      <h1 id = "scoreRight"> Score: 0</h1>
+      <h1 id = "scoreLeft"> Score: 6</h1>
+      <h1 id = "scoreRight"> Score: 6</h1>
       <div id = "ball"></div>
     </div>
   </body>

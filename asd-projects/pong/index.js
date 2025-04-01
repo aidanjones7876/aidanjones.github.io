@@ -17,8 +17,8 @@ function runProgram() {
   const PADDLE_HEIGHT = $("#paddleLeft").height();
   const BALL_WIDTH = $("#ball").width();
   const BALL_HEIGHT = $("#ball").height();
-  var scoreLeft = 0;
-  var scoreRight = 0;
+  var scoreLeft = 6;
+  var scoreRight = 6;
   // Game Item Objects
   const KEY = {
     "W": 87,
@@ -133,11 +133,13 @@ function runProgram() {
       scoreLeft++;
       scoreLeftElement.text("Score: " + scoreLeft);
       resetBall(ball);
+      checkWinCondition();
     } else if (obj.x < 0) {
       // Right paddle scores
       scoreRight++;
       scoreRightElement.text("Score: " + scoreRight);
       resetBall(ball);
+      checkWinCondition();
     }
   }
 
@@ -163,17 +165,13 @@ function runProgram() {
       scoreRight++;
       scoreRightElement.text("Score: " + scoreRight);
       resetBall(ball);
-      if (scoreRight === 7) {
-        endGame("Right Player");
-      }
+      checkWinCondition();
     } else if (ball.x > BOARD_WIDTH - BALL_WIDTH) {
       // Left paddle scores
       scoreLeft++;
       scoreLeftElement.text("Score: " + scoreLeft);
       resetBall(ball);
-      if (scoreLeft === 7) {
-        endGame("Left Player");
-      }
+      checkWinCondition();
     }
   }
 
@@ -185,19 +183,27 @@ function runProgram() {
   }
 
   // Handle what happens when someone wins
-  function endGame(winner) {
-    clearInterval(interval); // Stop the game loop
+  function checkWinCondition() {
+    if (scoreLeft >= 7) {
+      showEndGameScreen("Player 1 Wins!");
+    } else if (scoreRight >= 7) {
+      showEndGameScreen("Player 2 Wins!");
+    }
+  }
+
+  function showEndGameScreen(message) {
+    $("#winnerText").text(message);
     $("#endGameScreen").show();
-    $("#endGameMessage").text(winner + " wins!");
+    clearInterval(interval);
   }
 
   function restartGame() {
     scoreLeft = 0;
     scoreRight = 0;
-    scoreLeftElement.text("Score: " + scoreLeft);
-    scoreRightElement.text("Score: " + scoreRight);
+    scoreLeftElement.text("Score: 0");
+    scoreRightElement.text("Score: 0");
     resetBall(ball);
-    interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);
     $("#endGameScreen").hide();
+    interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);
   }
 }
