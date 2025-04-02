@@ -44,6 +44,8 @@ function runProgram() {
   var paddleRight = GameItem("#paddleRight", 0, 0);
   var ball = GameItem("#ball", (Math.random() * 3 + 2) * (Math.random() > 0.5 ? -1 : 1), (Math.random() > 0.5 ? -3 : 1));
 
+  var paddleMiddleLeft = null;
+  var paddleMiddleRight = null;
   // One-time setup
   let interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
   $(document).on('keydown', handleKeyDown);                           // change 'eventType' to the type of event you want to handle
@@ -59,6 +61,15 @@ function runProgram() {
   On each "tick" of the timer, a new frame is dynamically drawn using JavaScript
   by calling this function and executing the code inside.
   */
+  function addPaddles() {
+    if (paddleMiddleLeft === null) {
+      paddleMiddleLeft = GameItem("#paddleMiddleLeft", 0, 0);
+      paddleMiddleRight = GameItem("#paddleMiddleRight", 0, 0);
+      $("#paddleMiddleLeft").show();
+      $("#paddleMiddleRight").show();
+    }
+  }
+
   function newFrame() {
     drawGameItem(paddleLeft);
     updateGameItem(paddleLeft);

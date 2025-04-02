@@ -8,15 +8,15 @@ body {
   height: 500px;
   border: 1px solid white;
   background-color: black;
-  left: 300px;
-  top: 280px;
+  left: 350px;
+  top: 240px;
   position: absolute;
 }
 
 #title {
   position: absolute;
   top: -300px;
-  left: 340px;
+  left: 400px;
   font-size: 150px;
   font-weight: bold;
   text-shadow: 0 0 10px rgb(127, 0, 0), 0 0 20px rgb(74, 12, 105), 0 0 30px rgb(79, 0, 163), 0 0 40px rgb(154, 69, 233), 0 0 50px rgb(206, 134, 242), 0 0 60px rgb(247, 0, 255);
@@ -76,6 +76,23 @@ body {
   position: absolute;
   left: 435px;
   top: 220px;
+}
+
+#addPaddles {
+  top: -50px;
+  left: 10px;
+  position: absolute;
+  color: white;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  text-shadow: 0 0 10px rgb(0, 0, 0), 0 0 20px rgb(255, 0, 0), 0 0 30px rgb(139, 6, 6), 0 0 40px rgb(164, 61, 61), 0 0 50px rgb(91, 19, 19), 0 0 60px rgb(79, 7, 7);
+}
+
+#paddleMiddleLeft, #paddleMiddleRight {
+  background-color: rgb(255, 255, 255);
+  left: 550px;
+  top: 150px;
 }
 
 #endGameScreen {
