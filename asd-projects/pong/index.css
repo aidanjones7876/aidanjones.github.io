@@ -3,6 +3,15 @@ body {
   background-color: rgb(44, 29, 57);
 }
 
+#winTracker {
+  position: relative;
+  top: 10px;
+  left: 800px;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+}
+
 #board {
   width: 1200px;
   height: 500px;
@@ -78,22 +87,6 @@ body {
   top: 220px;
 }
 
-#addPaddles {
-  top: -50px;
-  left: 10px;
-  position: absolute;
-  color: white;
-  cursor: pointer;
-  font-size: 20px;
-  font-weight: bold;
-  text-shadow: 0 0 10px rgb(0, 0, 0), 0 0 20px rgb(255, 0, 0), 0 0 30px rgb(139, 6, 6), 0 0 40px rgb(164, 61, 61), 0 0 50px rgb(91, 19, 19), 0 0 60px rgb(79, 7, 7);
-}
-
-#paddleMiddleLeft, #paddleMiddleRight {
-  background-color: rgb(255, 255, 255);
-  left: 550px;
-  top: 150px;
-}
 
 #endGameScreen {
   position: absolute;
@@ -130,4 +123,5 @@ body {
 #restartButton:hover {
   background-color: #f1f1f1;
 }
+
 

@@ -27,6 +27,9 @@ function runProgram() {
     "DOWN": 40,
   };
 
+  var player1Wins = 0;
+  var player2Wins = 0;
+
   function GameItem(id, speedX, speedY) {
     var obj = {
       id: id,
@@ -44,8 +47,9 @@ function runProgram() {
   var paddleRight = GameItem("#paddleRight", 0, 0);
   var ball = GameItem("#ball", (Math.random() * 3 + 2) * (Math.random() > 0.5 ? -1 : 1), (Math.random() > 0.5 ? -3 : 1));
 
-  var paddleMiddleLeft = null;
-  var paddleMiddleRight = null;
+
+
+
   // One-time setup
   let interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
   $(document).on('keydown', handleKeyDown);                           // change 'eventType' to the type of event you want to handle
@@ -61,14 +65,7 @@ function runProgram() {
   On each "tick" of the timer, a new frame is dynamically drawn using JavaScript
   by calling this function and executing the code inside.
   */
-  function addPaddles() {
-    if (paddleMiddleLeft === null) {
-      paddleMiddleLeft = GameItem("#paddleMiddleLeft", 0, 0);
-      paddleMiddleRight = GameItem("#paddleMiddleRight", 0, 0);
-      $("#paddleMiddleLeft").show();
-      $("#paddleMiddleRight").show();
-    }
-  }
+  
 
   function newFrame() {
     drawGameItem(paddleLeft);
@@ -194,10 +191,14 @@ function runProgram() {
   }
 
   // Handle what happens when someone wins
-  function checkWinCondition() {
+   function checkWinCondition() {
     if (scoreLeft >= 7) {
+      player1Wins++;
+      $("#player1Wins").text(player1Wins);
       showEndGameScreen("Player 1 Wins!");
     } else if (scoreRight >= 7) {
+      player2Wins++;
+      $("#player2Wins").text(player2Wins);
       showEndGameScreen("Player 2 Wins!");
     }
   }
