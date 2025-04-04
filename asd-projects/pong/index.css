@@ -11,7 +11,7 @@ body {
   font-size: 30px;
   font-weight: bold;
   text-shadow: 0 0 10px rgb(127, 0, 0), 0 0 20px rgb(74, 12, 105), 0 0 30px rgb(79, 0, 163), 0 0 40px rgb(154, 69, 233), 0 0 50px rgb(206, 134, 242), 0 0 60px rgb(247, 0, 255);
-  animation: glow 2s infinite alternate
+  
 }
 
 #board {

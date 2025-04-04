@@ -163,7 +163,7 @@ function runProgram() {
   function doCollide(ball, paddle) {
     // Determines if objects collide
     if (ball.x < paddle.x + PADDLE_WIDTH && ball.x + BALL_WIDTH > paddle.x && ball.y < paddle.y + PADDLE_HEIGHT && ball.y + BALL_HEIGHT > paddle.y) {
-      ball.speedX = -ball.speedX * 1.05;
+      ball.speedX = -ball.speedX * 1.2;
     }
   }
 
